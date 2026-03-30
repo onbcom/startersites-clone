@@ -4,57 +4,85 @@ interface Template {
   name: string;
   price: number;
   category: string;
+  slug: string;
   image: string;
 }
 
 const templates: Template[] = [
-  { name: "Designo", price: 39, category: "Agency Template", image: "/images/template-designo.png" },
-  { name: "Vellox", price: 39, category: "Agency Template", image: "/images/template-vellox.png" },
-  { name: "Haven Estate", price: 49, category: "Real Estate Template", image: "/images/template-haven-estate.png" },
-  { name: "AI Chatbot", price: 59, category: "AI Template", image: "/images/template-ai-chatbot.png" },
-  { name: "William Thompson", price: 49, category: "Photography Template", image: "/images/template-william-thompson.png" },
-  { name: "Educore", price: 29, category: "Online Course Template", image: "/images/template-educore.png" },
+  { name: "Designo", price: 39, category: "Agency Template", slug: "designo", image: "/images/feature-mockup-1.png" },
+  { name: "Vellox", price: 39, category: "Agency Template", slug: "vellox", image: "/images/feature-mockup-2.png" },
+  { name: "Haven Estate", price: 49, category: "Real Estate Template", slug: "haven-estate", image: "/images/feature-mockup-3.png" },
+  { name: "AI Chatbot", price: 59, category: "AI Template", slug: "ai-chatbot", image: "/images/feature-mockup-4.png" },
+  { name: "William Thompson", price: 49, category: "Photography Template", slug: "william-thompson", image: "/images/feature-mockup-1.png" },
+  { name: "Educore", price: 29, category: "Online Course Template", slug: "educore", image: "/images/feature-mockup-2.png" },
+];
+
+const avatars = [
+  { src: "/images/avatar-jake.jpg", alt: "Jake" },
+  { src: "/images/avatar-emily.jpg", alt: "Emily" },
+  { src: "/images/avatar-ryan.jpg", alt: "Ryan" },
+  { src: "/images/avatar-sophia.jpg", alt: "Sophia" },
+  { src: "/images/avatar-brandon.jpg", alt: "Brandon" },
 ];
 
 function TemplateCard({ template }: { template: Template }) {
   return (
-    <div
+    <a
+      href={`/templates/${template.slug}`}
       style={{
-        backgroundColor: "white",
-        borderRadius: "16px",
-        overflow: "hidden",
         display: "flex",
         flexDirection: "column",
+        gap: "10px",
+        color: "inherit",
+        textDecoration: "none",
       }}
     >
       {/* Image area */}
-      <div style={{ position: "relative", overflow: "hidden", height: "401px", flexShrink: 0 }}>
+      <div
+        style={{
+          borderRadius: "8px",
+          overflow: "hidden",
+          width: "100%",
+          height: "401.602px",
+          position: "relative",
+          backgroundColor: "white",
+        }}
+      >
         <Image
           src={template.image}
           alt={template.name}
           fill
-          style={{ objectFit: "cover", objectPosition: "top" }}
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 427px"
         />
       </div>
 
-      {/* Info row */}
+      {/* Info area */}
       <div
         style={{
+          background: "white",
+          borderRadius: "8px",
+          padding: "24px",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "16px 20px",
+          flexDirection: "column",
+          gap: "12px",
         }}
       >
-        <div>
+        {/* Row 1: name + price */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <p
             style={{
-              fontFamily: "var(--font-onest)",
-              fontSize: "22px",
+              fontFamily: "'Onest', sans-serif",
+              fontSize: "18px",
               fontWeight: 600,
-              color: "rgb(8, 8, 8)",
-              lineHeight: "26.4px",
+              color: "rgb(8,8,8)",
               margin: 0,
             }}
           >
@@ -62,11 +90,10 @@ function TemplateCard({ template }: { template: Template }) {
           </p>
           <p
             style={{
-              fontFamily: "var(--font-onest)",
+              fontFamily: "'Onest', sans-serif",
               fontSize: "18px",
-              fontWeight: 500,
-              color: "rgb(8, 8, 8)",
-              lineHeight: "23.4px",
+              fontWeight: 600,
+              color: "rgb(8,8,8)",
               margin: 0,
             }}
           >
@@ -74,136 +101,167 @@ function TemplateCard({ template }: { template: Template }) {
           </p>
         </div>
 
-        {/* Seller avatars */}
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <Image
-            src="/images/seller-avatar.jpg"
-            alt="Seller"
-            width={32}
-            height={32}
-            style={{ borderRadius: "50%" }}
-          />
-          <Image
-            src="/images/framerstore-icon.png"
-            alt="Framerstore"
-            width={26}
-            height={26}
-          />
-        </div>
-      </div>
-
-      {/* Category row */}
-      <div style={{ padding: "0 20px 16px" }}>
-        <p
+        {/* Row 2: category + framer badge */}
+        <div
           style={{
-            fontFamily: "Switzer, sans-serif",
-            fontSize: "14px",
-            color: "rgb(112, 112, 112)",
-            margin: 0,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
-          {template.category}
-        </p>
+          <p
+            style={{
+              fontFamily: "'Switzer', sans-serif",
+              fontSize: "14px",
+              fontWeight: 400,
+              color: "rgb(112,112,112)",
+              margin: 0,
+            }}
+          >
+            {template.category}
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "6px",
+            }}
+          >
+            <Image
+              src="/images/framerstore-icon.png"
+              width={32}
+              height={32}
+              alt="Framer"
+              style={{ borderRadius: "8px" }}
+            />
+            <Image
+              src="/images/avatar-jake.jpg"
+              width={32}
+              height={32}
+              alt="Creator"
+              style={{ borderRadius: "50%" }}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+    </a>
   );
 }
 
 export default function FeaturedTemplates() {
   return (
-    <section
-      style={{
-        backgroundColor: "rgb(246, 246, 246)",
-        padding: "80px 0",
-      }}
-    >
+    <section style={{ background: "rgb(246,246,246)" }}>
       <div
         style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "0 60px",
+          width: "1440px",
+          padding: "80px 60px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "60px",
         }}
       >
-        {/* Header row */}
+        {/* Header */}
         <div
           style={{
+            width: "600px",
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
+            flexDirection: "column",
           }}
         >
-          {/* Left: Multi-line heading */}
-          <div>
-            {["Featured", "Framer", "templates"].map((word) => (
-              <span
-                key={word}
-                style={{
-                  display: "block",
-                  fontFamily: "var(--font-onest)",
-                  fontSize: "80px",
-                  fontWeight: 800,
-                  lineHeight: 1.0,
-                  color: "rgb(8, 8, 8)",
-                }}
-              >
-                {word}
-              </span>
-            ))}
-          </div>
+          <h2
+            data-reveal
+            style={{
+              fontFamily: "'Onest', sans-serif",
+              fontSize: "48px",
+              fontWeight: 700,
+              color: "rgb(8,8,8)",
+              margin: 0,
+              lineHeight: 1.1,
+            }}
+          >
+            Featured Framer templates
+          </h2>
 
-          {/* Right: Rating badge */}
-          <div style={{ textAlign: "right", paddingBottom: "8px" }}>
-            <p
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
+            <span
               style={{
-                fontFamily: "var(--font-onest)",
-                fontSize: "18px",
-                fontWeight: 700,
-                color: "rgb(8, 8, 8)",
-                margin: 0,
-              }}
-            >
-              4.9/5{" "}
-              <span style={{ color: "rgb(4, 72, 244)" }}>★★★★★</span>
-            </p>
-            <p
-              style={{
-                fontFamily: "Switzer, sans-serif",
+                fontFamily: "'Onest', sans-serif",
                 fontSize: "14px",
-                color: "#707070",
-                margin: "4px 0 0",
+                fontWeight: 500,
+                color: "rgb(112,112,112)",
               }}
             >
-              Loved by 1000+ creators
-            </p>
+              5
+            </span>
+            <span
+              style={{
+                fontFamily: "'Onest', sans-serif",
+                fontSize: "14px",
+                fontWeight: 500,
+                color: "rgb(112,112,112)",
+              }}
+            >
+              {" "}Loved by
+            </span>
+
+            {/* Stacked avatars */}
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+              {avatars.map((avatar, index) => (
+                <Image
+                  key={avatar.alt}
+                  src={avatar.src}
+                  width={34}
+                  height={34}
+                  alt={avatar.alt}
+                  style={{
+                    borderRadius: "50%",
+                    marginLeft: index === 0 ? "0px" : "-8px",
+                    display: "block",
+                  }}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Cards grid */}
+        {/* Template Grid */}
         <div
+          className="featured-templates-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateRows: "repeat(2, 530px)",
             gap: "20px",
-            marginTop: "40px",
+            width: "1320px",
+            height: "1080px",
           }}
-          className="featured-templates-grid"
         >
           {templates.map((template) => (
-            <TemplateCard key={template.name} template={template} />
+            <TemplateCard key={template.slug} template={template} />
           ))}
         </div>
       </div>
 
-      {/* Responsive grid styles */}
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           .featured-templates-grid {
             grid-template-columns: repeat(2, 1fr) !important;
+            height: auto !important;
           }
         }
-        @media (max-width: 390px) {
+        @media (max-width: 640px) {
           .featured-templates-grid {
             grid-template-columns: 1fr !important;
+            height: auto !important;
           }
         }
       `}</style>

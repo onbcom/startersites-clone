@@ -1,308 +1,318 @@
 import Image from "next/image";
 
-const BRAND_LOGOS = [1, 2, 3, 4, 5] as const;
+const AVATARS = [
+  { src: "/images/avatar-jake.jpg", alt: "Jake" },
+  { src: "/images/avatar-emily.jpg", alt: "Emily" },
+  { src: "/images/avatar-ryan.jpg", alt: "Ryan" },
+  { src: "/images/avatar-sophia.jpg", alt: "Sophia" },
+  { src: "/images/avatar-brandon.jpg", alt: "Brandon" },
+] as const;
 
-const NUMBER_SCALE = [
-  50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750,
-];
+const BRAND_LOGOS = [
+  { src: "/images/brand-logo-1.svg", width: 132, height: 34 },
+  { src: "/images/brand-logo-2.svg", width: 104, height: 31 },
+  { src: "/images/brand-logo-3.svg", width: 87, height: 27 },
+  { src: "/images/brand-logo-4.svg", width: 130, height: 28 },
+  { src: "/images/brand-logo-5.svg", width: 135, height: 34 },
+] as const;
 
 export default function HeroSection() {
   return (
-    <section
-      style={{
-        width: "100%",
-        minHeight: "737px",
-        backgroundColor: "transparent",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "60px 0 40px",
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "1280px",
-          padding: "0 60px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "40px",
-        }}
-        className="hero-container"
-      >
-        {/* Badge row */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "16px",
-            fontFamily: "var(--font-switzer, 'Switzer', sans-serif)",
-            fontSize: "13px",
-            color: "rgb(112, 112, 112)",
-          }}
-        >
-          <span>Template Featured in</span>
-          <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-            {BRAND_LOGOS.map((n) => (
-              <Image
-                key={n}
-                src={`/images/brand-logo-${n}.svg`}
-                alt=""
-                width={80}
-                height={24}
-                style={{ height: "24px", width: "auto", opacity: 0.6 }}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Heading block */}
-        <div className="hero-heading-block" style={{ display: "flex", flexDirection: "column" }}>
-          {/* Line 1: "Building quality Framer" */}
-          <h1
-            className="hero-h1"
-            style={{
-              fontFamily: "var(--font-onest, 'Onest', sans-serif)",
-              fontSize: "104px",
-              fontWeight: 800,
-              lineHeight: "1.0",
-              color: "rgb(8, 8, 8)",
-              letterSpacing: "-1px",
-              margin: 0,
-            }}
-          >
-            Building quality Framer
-          </h1>
-
-          {/* Line 2: framer-icon inline + "templates for" */}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              gap: "12px",
-            }}
-          >
-            <Image
-              src="/images/framer-icon.svg"
-              width={57}
-              height={57}
-              alt=""
-              className="rounded-lg"
-              style={{ borderRadius: "10px", flexShrink: 0 }}
-            />
-            <h1
-              className="hero-h1"
-              style={{
-                fontFamily: "var(--font-onest, 'Onest', sans-serif)",
-                fontSize: "104px",
-                fontWeight: 800,
-                lineHeight: "1.0",
-                color: "rgb(8, 8, 8)",
-                letterSpacing: "-1px",
-                margin: 0,
-              }}
-            >
-              templates for
-            </h1>
-          </div>
-
-          {/* Line 3: hero-mockup thumbnail + "creators" */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-            }}
-          >
-            <Image
-              src="/images/hero-mockup.png"
-              width={136}
-              height={99}
-              alt=""
-              className="rounded-lg"
-              style={{ borderRadius: "10px", flexShrink: 0 }}
-            />
-            <h1
-              className="hero-h1"
-              style={{
-                fontFamily: "var(--font-onest, 'Onest', sans-serif)",
-                fontSize: "104px",
-                fontWeight: 800,
-                lineHeight: "1.0",
-                color: "rgb(8, 8, 8)",
-                letterSpacing: "-1px",
-                margin: 0,
-              }}
-            >
-              creators
-            </h1>
-          </div>
-
-          {/* Line 4: "& founders." */}
-          <h1
-            className="hero-h1"
-            style={{
-              fontFamily: "var(--font-onest, 'Onest', sans-serif)",
-              fontSize: "104px",
-              fontWeight: 800,
-              lineHeight: "1.0",
-              color: "rgb(8, 8, 8)",
-              letterSpacing: "-1px",
-              margin: 0,
-            }}
-          >
-            &amp; founders.
-          </h1>
-        </div>
-
-        {/* CTA row */}
-        <div
-          className="hero-cta-row"
-          style={{ display: "flex", alignItems: "center", gap: "12px" }}
-        >
-          {/* Browse Templates button */}
-          <a
-            href="#"
-            style={{
-              backgroundColor: "rgb(4, 72, 244)",
-              color: "white",
-              fontFamily: "var(--font-switzer, 'Switzer', sans-serif)",
-              fontSize: "16px",
-              fontWeight: 400,
-              letterSpacing: "-0.16px",
-              padding: "16px 28px 16px 20px",
-              height: "54px",
-              borderRadius: "9999px",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              textDecoration: "none",
-              whiteSpace: "nowrap",
-              flexShrink: 0,
-            }}
-          >
-            Browse Templates
-            <Image
-              src="/images/icon-arrow.svg"
-              width={16}
-              height={16}
-              alt=""
-              style={{ filter: "brightness(0) invert(1)" }}
-            />
-          </a>
-
-          {/* Framerstore Features button (ghost) */}
-          <a
-            href="#"
-            style={{
-              backgroundColor: "rgba(0,0,0,0.04)",
-              color: "rgb(8, 8, 8)",
-              fontFamily: "var(--font-switzer, 'Switzer', sans-serif)",
-              fontSize: "16px",
-              fontWeight: 400,
-              padding: "16px 20px",
-              height: "54px",
-              borderRadius: "9999px",
-              border: "1px solid rgba(8,8,8,0.12)",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              textDecoration: "none",
-              whiteSpace: "nowrap",
-              flexShrink: 0,
-            }}
-          >
-            Framerstore Features
-          </a>
-        </div>
-
-        {/* Bottom stats row */}
-        <div
-          className="hero-stats-row"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          {/* Left: number scale */}
-          <div
-            className="hero-number-scale"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              fontFamily: "var(--font-mono, 'JetBrains Mono', monospace)",
-              fontSize: "11px",
-              color: "rgb(160, 160, 160)",
-            }}
-          >
-            {NUMBER_SCALE.map((n) => (
-              <span key={n}>{n}</span>
-            ))}
-          </div>
-
-          {/* Right: rating */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              fontFamily: "var(--font-switzer, 'Switzer', sans-serif)",
-              fontSize: "14px",
-              color: "rgb(112, 112, 112)",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: "2px" }}>
-              {[1, 2, 3, 4, 5].map((i) => (
-                <Image
-                  key={i}
-                  src="/images/icon-star.svg"
-                  width={14}
-                  height={14}
-                  alt=""
-                />
-              ))}
-            </div>
-            <span
-              style={{
-                fontFamily: "var(--font-onest, 'Onest', sans-serif)",
-                fontWeight: 700,
-                color: "rgb(8, 8, 8)",
-              }}
-            >
-              4.9/5
-            </span>
-            <span>Loved by 1000+ creators</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile responsive styles */}
+    <>
       <style>{`
-        @media (max-width: 767px) {
-          .hero-container {
-            padding: 0 20px !important;
-            gap: 24px !important;
+        .hero-section {
+          width: 1440px;
+          height: 737.203px;
+          background: transparent;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 40px;
+          position: relative;
+        }
+        .hero-main-content {
+          width: 1440px;
+          height: 737.203px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          gap: 60px;
+          padding: 200px 60px 60px;
+          position: relative;
+          z-index: 1;
+        }
+        .hero-text-block {
+          width: 1080px;
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+        }
+        .hero-badge-row {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+        }
+        .hero-h1 {
+          font-family: 'Onest', sans-serif;
+          font-size: 104px;
+          font-weight: 800;
+          color: rgb(8, 8, 8);
+          letter-spacing: -4.16px;
+          line-height: 104px;
+          margin: 0;
+        }
+        .hero-cta-row {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 16px;
+        }
+        .hero-marquee-row {
+          width: 1320px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-end;
+        }
+        .hero-loved-by {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+        }
+        .hero-avatar-stack {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 4px;
+        }
+        @media (max-width: 1024px) {
+          .hero-section {
+            width: 100%;
+            height: auto;
+          }
+          .hero-main-content {
+            width: 100%;
+            height: auto;
+            padding: 160px 32px 60px;
+          }
+          .hero-text-block {
+            width: 100%;
           }
           .hero-h1 {
-            font-size: 52px !important;
-            line-height: 52px !important;
+            font-size: 60px;
+            line-height: 60px;
+            letter-spacing: -2.4px;
+          }
+          .hero-marquee-row {
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+          }
+        }
+        @media (max-width: 640px) {
+          .hero-main-content {
+            padding: 120px 20px 40px;
+          }
+          .hero-h1 {
+            font-size: 40px;
+            line-height: 40px;
+            letter-spacing: -1.6px;
           }
           .hero-cta-row {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-          }
-          .hero-number-scale {
-            display: none !important;
-          }
-          .hero-stats-row {
-            justify-content: flex-start !important;
+            flex-direction: column;
+            align-items: flex-start;
           }
         }
       `}</style>
-    </section>
+
+      <section className="hero-section">
+        {/* Absolutely positioned hero mockup image */}
+        <Image
+          src="/images/hero-mockup.png"
+          alt=""
+          width={900}
+          height={737}
+          priority
+          style={{
+            position: "absolute",
+            right: 0,
+            top: 0,
+            width: "auto",
+            height: "100%",
+            objectFit: "cover",
+            opacity: 0.9,
+          }}
+        />
+
+        {/* Main content block */}
+        <div className="hero-main-content">
+          {/* TEXT BLOCK */}
+          <div className="hero-text-block">
+            {/* Badge row */}
+            <div className="hero-badge-row">
+              <Image
+                src="/images/framer-icon.svg"
+                width={57}
+                height={57}
+                alt="Framer"
+              />
+              <p
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: "12px",
+                  color: "rgb(112, 112, 112)",
+                  letterSpacing: "-0.24px",
+                  lineHeight: "19.2px",
+                  margin: 0,
+                }}
+              >
+                Template Featured in
+              </p>
+            </div>
+
+            {/* Heading */}
+            <h1 className="hero-h1">
+              Building quality Framer templates for creators &amp; founders.
+            </h1>
+
+            {/* CTA buttons row */}
+            <div className="hero-cta-row">
+              {/* Primary button */}
+              <a
+                href="/templates"
+                style={{
+                  backgroundColor: "rgb(4, 72, 244)",
+                  color: "white",
+                  borderRadius: "40px",
+                  padding: "16px 28px 16px 20px",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "8px",
+                  overflow: "hidden",
+                  fontFamily: "'Switzer', sans-serif",
+                  fontSize: "16px",
+                  fontWeight: 400,
+                  textDecoration: "none",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Browse Templates
+                <Image
+                  src="/images/icon-arrow.svg"
+                  width={16}
+                  height={16}
+                  alt=""
+                />
+              </a>
+
+              {/* Secondary button */}
+              <a
+                href="#feature"
+                style={{
+                  backgroundColor: "rgb(255, 255, 255)",
+                  color: "rgb(8, 8, 8)",
+                  borderRadius: "40px",
+                  padding: "16px 28px 16px 20px",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "8px",
+                  overflow: "hidden",
+                  fontFamily: "'Switzer', sans-serif",
+                  fontSize: "16px",
+                  fontWeight: 400,
+                  textDecoration: "none",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Framerstore Features
+              </a>
+            </div>
+          </div>
+
+          {/* BRAND MARQUEE ROW */}
+          <div className="hero-marquee-row">
+            {/* Left side: loved-by avatars */}
+            <div className="hero-loved-by">
+              <div className="hero-avatar-stack">
+                {AVATARS.map((avatar) => (
+                  <Image
+                    key={avatar.src}
+                    src={avatar.src}
+                    alt={avatar.alt}
+                    width={34}
+                    height={34}
+                    style={{
+                      borderRadius: "50%",
+                      width: "34px",
+                      height: "34px",
+                      objectFit: "cover",
+                    }}
+                  />
+                ))}
+              </div>
+              <p
+                style={{
+                  fontFamily: "'Onest', sans-serif",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  color: "#707070",
+                  margin: 0,
+                }}
+              >
+                5 Loved by
+              </p>
+            </div>
+
+            {/* Right side: marquee of brand logos */}
+            <div
+              className="marquee-container"
+              style={{ overflow: "hidden", display: "flex", flexDirection: "row" }}
+            >
+              <div
+                className="marquee-track"
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "60px",
+                  animation: "marquee 20s linear infinite",
+                  width: "max-content",
+                }}
+              >
+                {/* First set */}
+                {BRAND_LOGOS.map((logo) => (
+                  <Image
+                    key={`a-${logo.src}`}
+                    src={logo.src}
+                    alt=""
+                    width={logo.width}
+                    height={logo.height}
+                    style={{ flexShrink: 0 }}
+                  />
+                ))}
+                {/* Duplicate for infinite scroll */}
+                {BRAND_LOGOS.map((logo) => (
+                  <Image
+                    key={`b-${logo.src}`}
+                    src={logo.src}
+                    alt=""
+                    width={logo.width}
+                    height={logo.height}
+                    style={{ flexShrink: 0 }}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

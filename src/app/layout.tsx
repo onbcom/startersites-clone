@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Onest, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const onest = Onest({
   variable: "--font-onest",
@@ -33,7 +35,11 @@ export default function RootLayout({
       lang="en"
       className={`${onest.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <SmoothScroll />
+        <ScrollReveal />
+        {children}
+      </body>
     </html>
   );
 }
