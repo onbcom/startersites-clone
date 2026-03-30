@@ -32,27 +32,25 @@ export default function HeroSection() {
           letter-spacing: -4.16px;
           line-height: 1.0;
           margin: 0;
+          white-space: nowrap;
         }
 
         /* Line 1: "Building quality Framer" */
         .hero-h1-l1 {
           top: 98px;
           left: 60px;
-          width: 1080px;
         }
 
         /* Line 2: "templates for" */
         .hero-h1-l2 {
           top: 226px;
           left: 200px;
-          width: 610px;
         }
 
         /* Line 3: "creators & founders." */
         .hero-h1-l3 {
           top: 354px;
           left: 60px;
-          width: 941px;
         }
 
         /* Floating image — Framer icon (left of line 2) */
