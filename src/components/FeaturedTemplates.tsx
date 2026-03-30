@@ -9,12 +9,12 @@ interface Template {
 }
 
 const templates: Template[] = [
-  { name: "Designo", price: 39, category: "Agency Template", slug: "designo", image: "/images/feature-mockup-1.png" },
-  { name: "Vellox", price: 39, category: "Agency Template", slug: "vellox", image: "/images/feature-mockup-2.png" },
-  { name: "Haven Estate", price: 49, category: "Real Estate Template", slug: "haven-estate", image: "/images/feature-mockup-3.png" },
-  { name: "AI Chatbot", price: 59, category: "AI Template", slug: "ai-chatbot", image: "/images/feature-mockup-4.png" },
-  { name: "William Thompson", price: 49, category: "Photography Template", slug: "william-thompson", image: "/images/feature-mockup-1.png" },
-  { name: "Educore", price: 29, category: "Online Course Template", slug: "educore", image: "/images/feature-mockup-2.png" },
+  { name: "Designo", price: 39, category: "Agency Template", slug: "designo", image: "/images/template-designo.png" },
+  { name: "Vellox", price: 39, category: "Agency Template", slug: "vellox", image: "/images/template-vellox.png" },
+  { name: "Haven Estate", price: 49, category: "Real Estate Template", slug: "haven-estate", image: "/images/template-haven-estate.png" },
+  { name: "AI Chatbot", price: 59, category: "AI Template", slug: "ai-chatbot", image: "/images/template-ai-chatbot.png" },
+  { name: "William Thompson", price: 49, category: "Photography Template", slug: "william-thompson", image: "/images/template-william-thompson.png" },
+  { name: "Educore", price: 29, category: "Online Course Template", slug: "educore", image: "/images/template-educore.png" },
 ];
 
 const avatars = [
@@ -189,30 +189,10 @@ export default function FeaturedTemplates() {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              gap: "8px",
+              gap: "12px",
+              marginTop: "16px",
             }}
           >
-            <span
-              style={{
-                fontFamily: "'Onest', sans-serif",
-                fontSize: "14px",
-                fontWeight: 500,
-                color: "rgb(112,112,112)",
-              }}
-            >
-              5
-            </span>
-            <span
-              style={{
-                fontFamily: "'Onest', sans-serif",
-                fontSize: "14px",
-                fontWeight: 500,
-                color: "rgb(112,112,112)",
-              }}
-            >
-              {" "}Loved by
-            </span>
-
             {/* Stacked avatars */}
             <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
               {avatars.map((avatar, index) => (
@@ -226,9 +206,23 @@ export default function FeaturedTemplates() {
                     borderRadius: "50%",
                     marginLeft: index === 0 ? "0px" : "-8px",
                     display: "block",
+                    border: "2px solid rgb(246,246,246)",
                   }}
                 />
               ))}
+            </div>
+
+            {/* Rating + text */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+              <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "4px" }}>
+                <span style={{ fontFamily: "'Onest', sans-serif", fontSize: "14px", fontWeight: 600, color: "rgb(8,8,8)" }}>
+                  4.9/<span style={{ color: "rgb(4,72,244)" }}>5</span>
+                </span>
+                <span style={{ color: "rgb(250,180,0)", fontSize: "12px", letterSpacing: "1px" }}>★★★★★</span>
+              </div>
+              <span style={{ fontFamily: "'Switzer', sans-serif", fontSize: "13px", fontWeight: 400, color: "rgb(112,112,112)" }}>
+                Loved by 1000+ creators
+              </span>
             </div>
           </div>
         </div>
